@@ -1,0 +1,23 @@
+body{
+  background-color: #EDF1F7;
+}
+
+.login-text{
+  color: #212529;
+font-family: Roboto;
+font-size: 64px;
+font-style: normal;
+font-weight: 400;
+line-height: 76.8px; /* 120% */
+}
+
+.side-active{
+  border-radius: 4px;
+  background: #F6F9FF;
+}
+
+.side-menu-item:hover{
+  border-radius: 4px;
+  background: #F6F9FF;
+  cursor:pointer;
+}
