@@ -25,7 +25,7 @@ const SignIn = () => {
 
   return (
     <div className='font-roboto text-[#212529] space-y-10'>
-        <div className='sm:flex justify-between space-y-2 sm:space-y-0 '>
+        {/* <div className='sm:flex justify-between space-y-2 sm:space-y-0 '>
             <div className='flex items-center border border-[#4154F1] rounded p-2 space-x-2 w-[207px] h-[56px]'>
                 <input type="radio" name="user" id='rbtn' className='' />
                 <label htmlFor="rbtn">Teacher</label>
@@ -36,7 +36,7 @@ const SignIn = () => {
                 <label htmlFor="rbtn">Admin</label>
 
             </div>
-        </div>
+        </div> */}
         <form  className='space-y-6'>
             <div className='w-full'>
                 <label htmlFor="">Username</label>
@@ -56,8 +56,9 @@ const SignIn = () => {
             <div>
                 <button onClick={()=>Login()} type='button' className='button bg-[#4154F1] text-white p-1 rounded'>Sign In</button>
             </div>
-            <div><a href="">Forget Password ?</a></div>
+            {/* <div><a href="">Forget Password ?</a></div>
             <div className='sm:flex space-x-1'><p>Don't have an account ?</p> <a className='text-[#0DCAF0]' href="#">create account</a></div>
+         */}
         </form>
     </div>
   )

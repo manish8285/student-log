@@ -24,7 +24,7 @@ app.get("/test",(req,res)=>{
 
 app.use("/api/user",userRoutes)
 app.use("/api/student",studentRoutes)
-app.use("/api/attendence",attendenceRoutes)
+app.use("/api/attendance",attendenceRoutes)
 app.use("/api/course",courseRoutes)
 
 //error handling

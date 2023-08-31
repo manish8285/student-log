@@ -12,9 +12,10 @@ export const privateAxios = axios.create({
 privateAxios.interceptors.request.use(config=>{
     const token = getToken()
     if(token){
-        config.headers['Authorization']=token
+        config.headers['Authorization']= `Bearer ${token}`
         return config
     }
+    console.log(token)
 },error=>Promise.reject(error))
 export const isLogedIn=()=>{
     if(localStorage.getItem("user")){
@@ -24,7 +25,7 @@ export const isLogedIn=()=>{
 }
 
 export const getUserDetails=()=>{
-    if(isLogedIn){
+    if(isLogedIn()){
         const user = JSON.parse(localStorage.getItem("user"))
         return user;
     }

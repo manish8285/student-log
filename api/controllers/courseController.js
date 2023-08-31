@@ -19,8 +19,8 @@ const updateCourse= asyncHandler(async(req,res)=>{
         res.status(401)
         throw new Error("All fields are required")
     }
-    const rcourse = await Course.update(course)
-    res.status(201)
+    const rcourse = await Course.updateOne({_id:course._id},{$set:{name:course.name,time:course.time}})
+    res.status(200)
     res.json(rcourse)
 })
 

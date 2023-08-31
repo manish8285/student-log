@@ -14,7 +14,7 @@ const Login = () => {
                 <h1>for your business</h1>
             </div>
             <div className='mt-[40px] text-justify'>
-                <p>Our attendance management system, named 'StudentLog,'
+                <p>Our attendance management system, named StudentLog,
                      simplifies tracking student attendance efficiently,
                       enabling educational institutions to effortlessly manage 
                       attendance records and enhance overall class management.</p>

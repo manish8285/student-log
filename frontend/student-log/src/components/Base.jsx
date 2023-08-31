@@ -8,7 +8,7 @@ const Base = ({children}) => {
         <Topbar />
         <div className='flex'>
         <SideMenu />
-        <div>
+        <div className='w-full  m-5'>
         {
             children
         }

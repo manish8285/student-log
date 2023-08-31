@@ -5,7 +5,7 @@ const studentSchema =mongoose.Schema({
     name:{type:String,require:true},
     rollNo:{type:String,require:true},
     class:{type:String,require:true},
-    course:{type:mongoose.Schema.Types.ObjectId,ref:"Course",require:true}
+    course:{type:mongoose.Schema.Types.ObjectId,ref:"course",require:true}
 });
 
 studentSchema.pre("save",async function(next){

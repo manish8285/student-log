@@ -2,32 +2,45 @@ const asyncHandler = require("express-async-handler")
 const Attendence = require("../models/attendence")
 
 const addAttendence = asyncHandler(async(req,res)=>{
-    const {student,course} = req.body
-    if(!student || !course){
-        res.status(400)
-            throw new Error("All fileds are required")  
-    }
-    const present = await Attendence.findOne({course,student,date:{
-        $gte: new Date().setHours(0,0,0,0),
-        $lt:new Date()
-    }})
-    let attendence;
-    if(!present){
-        attendence = await Attendence.create({
-            course:course,
-            student:student,
+    const attendances = req.body;
+    let count = 0;
+
+try {
+    for (const attendance of attendances) {
+        const { student, course } = attendance;
+
+        if (!student || !course) {
+            continue
+        }
+
+        const existingAttendance = await Attendence.findOne({
+            course,
+            student,
+            date: {
+                $gte: new Date().setHours(0, 0, 0, 0),
+                $lt: new Date(),
+            },
+        });
+
+        if (existingAttendance) {
+            continue
+        }
+
+        const newAttendance = await Attendence.create({
+            course,
+            student,
             date: new Date(),
-            status:"Present"
-        })
-    }else{
-        res.status(401)
-        throw new Error("Attendence already marked")
+            status: "Present",
+        });
+        count++
     }
 
-    
+    return res.status(201).json({ message: `${count} Attendance recorded successfully` });
+} catch (error) {
+    console.error("Error while recording attendance:", error);
+    return res.status(500).json({ error: "Internal server error" });
+}
 
-    res.status(201)
-    res.json(attendence)
 })
 
 const updateAttendence = asyncHandler(async(req,res)=>{
@@ -70,7 +83,7 @@ const getAttendence = asyncHandler(async(req,res)=>{
     startDate.setHours(0,0,0,0)
     const endDate = new Date(date)
     endDate.setHours(23,59,59,999)
-    const attendences = await Attendence.find({date:{$gte:startDate,$lt:endDate}})
+    const attendences = await Attendence.find({date:{$gte:startDate,$lt:endDate}}).populate("course").populate("student")
     res.status(200)
     res.json(attendences)
 })

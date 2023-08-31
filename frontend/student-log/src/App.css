@@ -2,6 +2,10 @@ body{
   background-color: #EDF1F7;
 }
 
+.text-primary{
+  color: #4154F1;
+}
+
 .login-text{
   color: #212529;
 font-family: Roboto;
