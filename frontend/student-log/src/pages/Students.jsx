@@ -39,7 +39,7 @@ const Students = () => {
     {
       field: 'course.name',
       headerName: 'Course',
-      width: 150,
+      width: 250,
       editable: true,
       valueGetter: (params) => params.row?.course?.name,
     },
@@ -175,7 +175,7 @@ const Students = () => {
     </div>  
     <TextField onChange={(event)=>setStudent({...student,"class":event.target.value})} value={student?.class} className='w-full' id="standard-basic" label="Class" variant="standard" />
 
-    <Button id="btnAdd" onClick={()=>createStudent()} variant="outlined">Add Studdent</Button>
+    <Button id="btnAdd" onClick={()=>createStudent()} variant="outlined">Add Student</Button>
 
     {
       (message) &&(<Alert severity={message?.type}>{message?.message}</Alert>)

@@ -17,7 +17,7 @@ const SideMenu = () => {
 
 
   return (
-    <nav className=' bg-white p-[20px] inline-block shadow-inner h-[94vh] '>
+    <nav className=' bg-white p-[20px] w-full sm:w-min inline-block shadow-inner sm:h-[94vh] '>
         
         <div >
             <h5>Track</h5>

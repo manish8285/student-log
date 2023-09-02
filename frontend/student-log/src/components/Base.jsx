@@ -6,9 +6,9 @@ const Base = ({children}) => {
   return (
     <div className=''>
         <Topbar />
-        <div className='flex'>
+        <div className='sm:flex'>
         <SideMenu />
-        <div className='w-full  m-5'>
+        <div className='w-full  sm:m-5'>
         {
             children
         }

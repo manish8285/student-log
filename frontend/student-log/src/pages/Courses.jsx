@@ -25,17 +25,18 @@ const Courses = () => {
   const columns = [
     { field: 'id', headerName: 'S NO.', width: 90 },
     {
-      field: 'name',
-      headerName: 'Course',
-      width: 150,
-      editable: true,
-    },
-    {
       field: 'time',
       headerName: 'Time',
       width: 150,
       editable: true,
-    }
+    },
+    {
+      field: 'name',
+      headerName: 'Course',
+      width:250,
+      editable: true,
+    },
+    
 
   ];
   
