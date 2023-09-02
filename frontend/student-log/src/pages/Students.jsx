@@ -41,7 +41,7 @@ const Students = () => {
       headerName: 'Course',
       width: 150,
       editable: true,
-      valueGetter: (params) => params.row.course.name,
+      valueGetter: (params) => params.row?.course?.name,
     },
     {
       field: 'class',
