@@ -10,14 +10,14 @@ const SideMenu = () => {
 
     const LogOut=()=>{
         logOut()
-        navigate("/login")
+        navigate("/")
 
     }
 
 
 
   return (
-    <nav className=' bg-white p-[20px] w-full sm:w-min inline-block shadow-inner sm:h-[94vh] '>
+    <nav className='sm:fixed sm:left-0 sm:top-[50px] bg-white p-[20px] w-full sm:w-min inline-block shadow-inner sm:h-[94vh] '>
         
         <div >
             <h5>Track</h5>

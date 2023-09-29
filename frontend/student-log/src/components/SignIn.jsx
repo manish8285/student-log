@@ -8,18 +8,23 @@ const SignIn = () => {
     const [email,setEmail]= useState("")
     const [password,setPassword]= useState("")
     const [message,setMessage]= useState("")
+    const [loader,setLoader] = useState(false)
 
     const Login=()=>{
+        setMessage("")
+        setLoader(true)
         console.log({email,password})
         signInUser({email,password}).then(data=>{
             console.log(data)
             saveUser(data)
            navigate("/attendence-sheet")
         }).catch(e=>{
+            setLoader(false)
             console.log(e)
             let msg = e?.response?.data
             setMessage("Something went wrong")
         })
+        
 
     }
 
@@ -44,7 +49,7 @@ const SignIn = () => {
             </div>
             <div className='w-full'>
                 <label htmlFor="">Password</label>
-                <input type="text" onChange={(event)=>setPassword(event.target.value)} value={password} className='w-full h-[38px] p-3 border rounded' />
+                <input type="password" onChange={(event)=>setPassword(event.target.value)} value={password} className='w-full h-[38px] p-3 border rounded' />
             </div>
 
                 
@@ -54,7 +59,7 @@ const SignIn = () => {
             
 
             <div>
-                <button onClick={()=>Login()} type='button' className='button bg-[#4154F1] text-white p-1 rounded'>Sign In</button>
+                <button onClick={()=>Login()} disabled={loader} type='button' className='button bg-[#4154F1] text-white px-6 py-1 rounded'>{loader?'Please Wait ...':'Sign In'}</button>
             </div>
             {/* <div><a href="">Forget Password ?</a></div>
             <div className='sm:flex space-x-1'><p>Don't have an account ?</p> <a className='text-[#0DCAF0]' href="#">create account</a></div>

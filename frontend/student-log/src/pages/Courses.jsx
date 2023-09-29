@@ -36,6 +36,18 @@ const Courses = () => {
       width:250,
       editable: true,
     },
+    {
+      field: 'session',
+      headerName: 'Session',
+      width:150,
+      editable: false,
+    },
+    {
+      field: 'fee',
+      headerName: 'fee',
+      width:150,
+      editable: false,
+    },
     
 
   ];
@@ -137,6 +149,8 @@ const Courses = () => {
      <form className='space-y-3'>
     <TextField onChange={(event)=>setCourse({...course,"name":event.target.value})} value={course?.name} className='w-full' id="standard-basic" label="Course Name" variant="standard" />
     <TextField onChange={(event)=>setCourse({...course,"time":event.target.value})} value={course?.time} className='w-full' id="standard-basic" label="Course Time" variant="standard" />
+    <TextField onChange={(event)=>setCourse({...course,"session":event.target.value})} value={course?.session} className='w-full' id="standard-basic" label="Course Session" variant="standard" />
+    <TextField onChange={(event)=>setCourse({...course,"fee":event.target.value})} value={course?.fee} className='w-full' id="standard-basic" label="Course Fee" variant="standard" />
 
 
     <Button id="btnAdd" onClick={()=>createCourse()} variant="outlined">Add Course</Button>
@@ -158,6 +172,8 @@ const Courses = () => {
         <form className='space-y-3'>
             <TextField onChange={(event)=>setSelectedRow({...selectedRow,"name":event.target.value})} value={selectedRow?.name} className='w-full'  label="Course Name" variant="standard" />
             <TextField onChange={(event)=>setSelectedRow({...selectedRow,"time":event.target.value})} value={selectedRow?.time} className='w-full'  label="Course Time" variant="standard" />
+            <TextField onChange={(event)=>setSelectedRow({...selectedRow,"session":event.target.value})} value={selectedRow?.session} className='w-full'  label="Session" variant="standard" />
+            <TextField onChange={(event)=>setSelectedRow({...selectedRow,"fee":event.target.value})} value={selectedRow?.fee} className='w-full'  label="Fee" variant="standard" />
             <div className='space-x-2'>
             <Button id="btnEdit" onClick={()=>editCourse()} variant="outlined">Update Curse</Button>
             <Button id="btnEdit" onClick={()=>removeCourse(selectedRow.id)} variant="outlined">Delete Curse</Button>

@@ -10,7 +10,7 @@ const Login = () => {
         <div className='sm:w-1/2 flex  items-center justify-center'>
             <div className='w-[80%] inline-block font-roboto'>
             <div className='login-text'>
-                <h1>Attendence</h1>
+                <h1>Attendance</h1>
                 <h1>for your business</h1>
             </div>
             <div className='mt-[40px] text-justify'>

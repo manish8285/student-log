@@ -3,7 +3,7 @@ import { getUserDetails, isLogedIn } from '../services/helper'
 
 const Topbar = () => {
   return (
-    <nav className='flex justify-between w-full bg-white px-6 py-2 shadow-inner'>
+    <nav className='sm:fixed sm:top-0 flex justify-between w-full bg-white px-6 py-2 shadow-inner'>
         
         <h1 className='text-2xl'>StudentLog</h1>
         {(isLogedIn()) && (<div className='flex '><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

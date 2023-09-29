@@ -4,23 +4,34 @@ const Course  = require("../models/course")
 
 const addStudent= asyncHandler(async(req,res)=>{
     let student = req.body
-    if(!student.name || !student.class || !student.course){
-        res.status(401)
+    console.log(student)
+    if(!student.name || !student.class || !student.course || !student.joiningDate || !student.fee){
+        res.status(400)
         throw new Error("All fields are required")
     }
+
+    try{
     let rstudent = await Student.create(student)
+    console.log(rstudent)
     res.status(201)
     res.json(rstudent)
+    }catch(error){
+        res.status(400)
+        res.send(error)
+    }
+    //res.json(student)
 })
 
 const updateStudent = asyncHandler(async(req,res)=>{
     let student = req.body
-    if(!student.name || !student.class || !student.course){
+    if(!student.name || !student.class || !student.course ||!student.fee ){
         res.status(401)
         throw new Error("All fields are required")
     }
     let rstudent = await Student.updateOne({_id:student._id},{
-        $set:{name:student.name,class:student.class}
+        $set:{name:student.name,
+            class:student.class,
+            fee:student.fee}
     })
     res.status(201)
     res.json(rstudent)

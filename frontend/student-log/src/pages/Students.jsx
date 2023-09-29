@@ -5,13 +5,20 @@ import { Alert, Box, Button, Fade, FormControl, InputLabel, MenuItem, Modal, Sel
 import { DataGrid } from '@mui/x-data-grid'
 import { modalStyle } from '../assets/constant'
 import { getCourses } from '../services/course-service'
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs'
 
 const Students = () => {
   const [student,setStudent] = useState({
     name:"",
     rollNo:"",
     class:"",
-    course:""
+    course:"",
+    fee:"",
+    joiningDate:""
   })
   const [students,setStudents] = useState([])
   const [courses,setCourses] = useState([])
@@ -28,27 +35,40 @@ const Students = () => {
       field: 'rollNo',
       headerName: 'Roll No',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'name',
       headerName: 'Student Name',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'course.name',
       headerName: 'Course',
       width: 250,
-      editable: true,
+      editable: false,
       valueGetter: (params) => params.row?.course?.name,
     },
     {
       field: 'class',
       headerName: 'class',
       width: 150,
-      editable: true,
+      editable: false,
     },
+    {
+      field:'joiningDate',
+      headerName:'Joining Date',
+      width:150,
+      editable:false,
+      valueGetter:(params)=> new Date(params.row.joiningDate).toLocaleString('en-US',{year:'numeric',month:'long',day:'numeric'})
+    },
+    {
+      field :'fee',
+      headerName:'fee',
+      editable:false,
+
+    }
 
 
   ];
@@ -118,7 +138,7 @@ const Students = () => {
             type:"success",
             message:"Updated Successfully"
           })
-          getAllCourses()
+          getAll()
       }).catch(error=>{
         console.log(error)
         setEditMessage({
@@ -174,7 +194,14 @@ const Students = () => {
 </FormControl>
     </div>  
     <TextField onChange={(event)=>setStudent({...student,"class":event.target.value})} value={student?.class} className='w-full' id="standard-basic" label="Class" variant="standard" />
-
+    <TextField onChange={(event)=>setStudent({...student,"fee":event.target.value})} value={student?.fee} className='w-full' id="standard-basic" label="Fee" variant="standard" />
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DemoContainer components={['DatePicker']}>
+        <DatePicker onChange={(date)=>setStudent({...student,'joiningDate':dayjs(date).toISOString()})} label="Joining Date" />
+      </DemoContainer>
+    </LocalizationProvider>
+    
+    
     <Button id="btnAdd" onClick={()=>createStudent()} variant="outlined">Add Student</Button>
 
     {
@@ -187,12 +214,13 @@ const Students = () => {
       open={editModal}
       onClose={()=>setEditModal(!editModal)}
       aria-labelledby="Edit Course"
-
     >
       <Fade in={editModal}>
         <Box sx={modalStyle}>
         <form className='space-y-3'>
             <TextField onChange={(event)=>setSelectedRow({...selectedRow,"name":event.target.value})} value={selectedRow?.name} className='w-full'  label="Student Name" variant="standard" />
+            <TextField onChange={(event)=>setSelectedRow({...selectedRow,"class":event.target.value})} value={selectedRow?.class} className='w-full'  label="Class" variant="standard" />
+            <TextField onChange={(event)=>setSelectedRow({...selectedRow,"fee":event.target.value})} value={selectedRow?.fee} className='w-full'  label="Fee" variant="standard" />
             {/* <div style={{marginTop:"40px"}}>
               <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Course</InputLabel>
@@ -211,9 +239,11 @@ const Students = () => {
                   }
                 </Select>
               </FormControl>
-              </div>   */}
-            <TextField onChange={(event)=>setSelectedRow({...selectedRow,"time":event.target.value})} value={selectedRow?.class} className='w-full'  label="Class" variant="standard" />
-            <div className='space-x-2'>
+              </div>   
+            
+              <TextField onChange={(event)=>setSelectedRow({...selectedRow,"time":event.target.value})} value={selectedRow?.time} className='w-full'  label="Class" variant="standard" />
+            */}
+              <div className='space-x-2'>
             <Button id="btnEdit" onClick={()=>editStudent()} variant="outlined">Update Student</Button>
             <Button id="btnEdit" onClick={()=>removeStudent(selectedRow.id)} variant="outlined">Delete Student</Button>
             </div>

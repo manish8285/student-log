@@ -5,6 +5,8 @@ const studentSchema =mongoose.Schema({
     name:{type:String,require:true},
     rollNo:{type:String,require:true},
     class:{type:String,require:true},
+    joiningDate:{type:Date, default : Date.now()},
+    fee:Number,
     course:{type:mongoose.Schema.Types.ObjectId,ref:"course",require:true}
 });
 
