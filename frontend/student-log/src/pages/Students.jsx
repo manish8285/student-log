@@ -60,9 +60,9 @@ const Students = () => {
       field:'joiningDate',
       headerName:'Joining Date',
       width:150,
-      editable:false,
-      valueGetter:(params)=> new Date(params.row.joiningDate).toLocaleString('en-US',{year:'numeric',month:'long',day:'numeric'})
-    },
+       editable:false,
+    //   valueGetter:(params)=> new Date(params.row.joiningDate).toLocaleString('en-US',{year:'numeric',month:'long',day:'numeric'})
+     },
     {
       field :'fee',
       headerName:'fee',
