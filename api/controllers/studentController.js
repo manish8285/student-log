@@ -24,7 +24,7 @@ const addStudent= asyncHandler(async(req,res)=>{
 
 const updateStudent = asyncHandler(async(req,res)=>{
     let student = req.body
-    if(!student.name || !student.class || !student.course ||!student.fee ){
+    if(!student.name || !student.class ||!student.fee){
         res.status(401)
         throw new Error("All fields are required")
     }

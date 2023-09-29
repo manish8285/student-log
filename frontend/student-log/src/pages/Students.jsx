@@ -243,6 +243,11 @@ const Students = () => {
             
               <TextField onChange={(event)=>setSelectedRow({...selectedRow,"time":event.target.value})} value={selectedRow?.time} className='w-full'  label="Class" variant="standard" />
             */}
+            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DatePicker']}>
+                <DatePicker onChange={(date)=>setSelectedRow({...selectedRow,'joiningDate':dayjs(date).toISOString()})} label="Joining Date" />
+              </DemoContainer>
+            </LocalizationProvider> */}
               <div className='space-x-2'>
             <Button id="btnEdit" onClick={()=>editStudent()} variant="outlined">Update Student</Button>
             <Button id="btnEdit" onClick={()=>removeStudent(selectedRow.id)} variant="outlined">Delete Student</Button>
