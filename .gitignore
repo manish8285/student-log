@@ -1,2 +1,4 @@
 node_modules/
 frontend/student-log/node_modules/
+
+.env

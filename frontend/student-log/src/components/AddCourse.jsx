@@ -8,7 +8,8 @@ const AddCourse = () => {
 
   const createCourse=()=>{
 
-    addCourse=(course).then(data=>{
+    addCourse(course).then(data=>{
+      console.log(data);
       
     })
   }
