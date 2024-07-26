@@ -5,8 +5,8 @@ import {useNavigate} from "react-router-dom"
 
 const SignIn = () => {
     let navigate = useNavigate()
-    const [email,setEmail]= useState("")
-    const [password,setPassword]= useState("")
+    const [email,setEmail]= useState("inspiredclasses8@gmail.com")
+    const [password,setPassword]= useState("inspiredclasses8@gmail.com")
     const [message,setMessage]= useState("")
     const [loader,setLoader] = useState(false)
 
