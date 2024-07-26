@@ -1,6 +1,6 @@
 # Student Log
 
-![Student Log](./images/student_log_banner.png)
+![Student Log](./images/ss6.png)
 
 ## Table of Contents
 
@@ -73,9 +73,12 @@ Student Log is a comprehensive application designed to help educators and studen
     JWT_SECRET="your sceret" 
 
 ## Usage
-**Login:** Use the provided credentials to log in as a teacher or student. 
-**Dashboard:** Access the dashboard to manage attendance, grades, and reports. 
-**Reports:** Generate and view progress reports for each student. 
+**Login:** Use the provided credentials to log in as a teacher or student.   
+ 
+**Dashboard:** Access the dashboard to manage attendance, grades, and reports.  
+
+**Reports:** Generate and view progress reports for each student.   
+
 
 ## Snap Shot 
 
